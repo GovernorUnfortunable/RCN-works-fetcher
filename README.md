@@ -50,7 +50,7 @@ The script generates three output files in the `openalex_outputs` directory:
    - Lists top 10 authors by publication count
 
 3. `works_citations_{start_date}_{end_date}.txt`
-   - Detailed citations including:
+   - A detailed list of citations including:
      * Author name
      * OpenAlex ID
      * ORCID
