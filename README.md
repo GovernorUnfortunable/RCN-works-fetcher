@@ -80,7 +80,3 @@ M. Milia <mmilia@nd.edu>
 - [OpenAlex](https://openalex.org/) for providing the academic works database
 - [Requests](https://docs.python-requests.org/en/master/) library
 - [Pandas](https://pandas.pydata.org/) for data manipulation
-
----
-
-**Note**: Replace placeholders like `yourusername` and `youremail@example.com` with your actual GitHub username and contact email.
