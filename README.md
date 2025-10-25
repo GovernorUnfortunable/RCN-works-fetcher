@@ -1,4 +1,4 @@
-This repository includes scripts for retrieving information from Open Alex to map the work of a Research Coordination Network. 
+Find below scripts for retrieving information from Open Alex to map the work of a Research Coordination Network. 
 
 ## 1. The RCN-works-fetcher
 This Python script retrieves and analyzes academic works from the OpenAlex database for a predefined list of authors (in this case, the NSF-SEEKCommons research project). It provides  data extraction and includes author information and some publication details.
