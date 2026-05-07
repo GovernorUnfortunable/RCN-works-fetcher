@@ -1,10 +1,10 @@
 Find below scripts for retrieving information from Open Alex to map the work of a Research Coordination Network. 
 
 ## 1. The RCN-works-fetcher
-This Python script retrieves and analyzes academic works from the OpenAlex database for a predefined list of authors (in this case, the NSF-SEEKCommons research project). It provides  data extraction and includes author information and some publication details.
+RCN-works-fetcher is a Python-based tool designed to retrieve and systematize the academic and technical output of a Research Coordination Network (RCN) from the OpenAlex open database. It automates the collection of works, author metadata (including ORCID identifiers and institutional affiliations), and publication details for a predefined list of authors and developers (in our original use case, network members), filtering results by date range. Output files support downstream use in knowledge infrastructure projects — e.g., the SEEKCommons Resource Hub — where making the collective work of researchers, activists, and technologists credited, discoverable, reusable, and actionable is central to supporting research oriented to address socio-environmental challenges and document environmental harm.
 
 ### Features
-1. Fetches academic works for multiple authors (i.e., [people who create works]([url](https://docs.openalex.org/api-entities/authors))) 
+1. Loads author IDs from a plain text file (one ID per line), making it easy to update your list without editing the script (i.e., [people who create works]([url](https://docs.openalex.org/api-entities/authors))) 
 2. Retrieves detailed author information, including:
   - OpenAlex ID
   - ORCID
@@ -25,20 +25,29 @@ pip install requests pandas
 ```
 
 ### How to use
+
 1. Clone the repository:
+```bash
+   git clone https://github.com/GovernorUnfortunable/RCN-works-fetcher.git
+   cd RCN-works-fetcher
+```
+
+2. Prepare your author IDs file by creating a plain text file (e.g., `authors.txt`) with one OpenAlex author ID per line. Lines starting with `#` are treated as comments and ignored:
+```
+   # Add your target group/network members' OpenAlex IDs here
+   a0000000001
+   a0000000002
+```
+
+3. Run the script:
    ```bash
-   git clone https://github.com/yourusername/openalex-works-retrieval.git
-   cd openalex-works-retrieval
+   python RCN-works-fetcher.py
    ```
    
-2. Run the script:
-   ```bash
-   python openalex_works_retrieval.py
-   ```
-
-3. Follow the prompts:
-   - Enter your email address (this optional, but recommended to work with OpenAlex API recommendations)
-   - Specify start and end dates for work retrieval (format YYYY-MM-DD)
+4. Follow the prompts:
+   - Enter the path to your author IDs file (e.g., `authors.txt`)
+   - Enter your email address (this is optional, but recommended as a courtesy to the OpenAlex API)
+   - Specify start and end dates for work retrieval (format `YYYY-MM-DD`). Press Enter to skip either date.
 
 ### Provided outputs
 The script generates three output files in the `openalex_outputs` directory:
@@ -58,7 +67,7 @@ The script generates three output files in the `openalex_outputs` directory:
      * Publication details
 
 ### Customization
-To modify the list of authors, edit the `author_ids` list in the script. The current list includes 70+ author IDs.
+To modify the list of authors, edit your authors.txt file. Add or remove one OpenAlex author ID per line. No changes to the script itself are needed.
 
 ### API Considerations
 - The script implements a 1-second delay between API requests to be API-friendly
@@ -67,8 +76,9 @@ To modify the list of authors, edit the `author_ids` list in the script. The cur
 
 ### Limitations
 - Limited to the OpenAlex database
-- Rate-limited by OpenAlex API guidelines
+- Rate-limited by OpenAlex API guidelines (see also new guidelines for credit use in OpenAlex)
 - Requires manual updates to the author list
+- Authors with very large publication records may have results truncated
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
